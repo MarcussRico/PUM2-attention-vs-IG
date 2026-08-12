@@ -1,0 +1,16 @@
+model,seed,test_auc_roc,test_auc_pr,num_params,epochs
+baseline,0,0.9684,0.9526,1217,40
+baseline,1,0.9738,0.9515,1217,40
+baseline,2,0.9659,0.9247,1217,40
+baseline,3,0.9624,0.9268,1217,40
+baseline,4,0.9734,0.9539,1217,40
+cnn_lstm,0,0.9733,0.9638,18145,40
+cnn_lstm,1,0.972,0.9626,18145,40
+cnn_lstm,2,0.9834,0.9797,18145,40
+cnn_lstm,3,0.9749,0.9675,18145,40
+cnn_lstm,4,0.969,0.9564,18145,40
+cnn_lstm_attention,0,0.956,0.9369,18210,40
+cnn_lstm_attention,1,0.9462,0.933,18210,40
+cnn_lstm_attention,2,0.967,0.9454,18210,40
+cnn_lstm_attention,3,0.9597,0.9337,18210,40
+cnn_lstm_attention,4,0.9588,0.9412,18210,40

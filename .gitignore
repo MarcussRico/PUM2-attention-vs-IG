@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# scratch / stray files
+src/def Max_Min(a):.py.py
+src/results_log copy.csv
+src/Untitled-1.ipynb
+
+# manuscript working files — kept local, not part of the public code release
+PAPER_DRAFT_methods_results.md
+PUM2_attention_vs_IG_preprint.docx
+arxiv_abstract.txt
+src/README.md

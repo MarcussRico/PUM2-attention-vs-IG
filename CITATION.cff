@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Attention vs. Integrated Gradients for PUM2 Binding-Site Prediction"
+abstract: >-
+  Code and result logs for a comparison of attention weights against Integrated
+  Gradients attributions for RNA-binding protein binding-site prediction,
+  validated against the experimentally characterized PUM2 binding motif.
+type: software
+authors:
+  - given-names: "Sai Charan"
+    family-names: "A"
+    orcid: "https://orcid.org/0009-0004-3209-1549"
+    city: "Chennai"
+    country: "IN"
+license: MIT
+version: "1.0.0"
+date-released: "2026-08-12"
+keywords:
+  - RNA-binding proteins
+  - PUM2
+  - interpretability
+  - integrated gradients
+  - attention
+  - deep learning
