@@ -33,6 +33,7 @@ MODEL_REGISTRY = {
 
 # ---- Config ----
 DATA_CSV = "../data/real_sequences.csv"
+MODEL_DIR = "../outputs"   # overridable via --model-dir, so ablations cannot clobber the main run
 SEQ_LEN = 101
 BATCH_SIZE = 128
 EPOCHS = 40
@@ -175,15 +176,15 @@ def main(model_name, force_cpu=False, seed=SEED, verbose=True, epochs=None, data
         print(f"AUC-ROC: {test_auc_roc:.4f}")
         print(f"AUC-PR:  {test_auc_pr:.4f}")
 
-    os.makedirs("../outputs", exist_ok=True)
-    save_path = f"../outputs/{model_name}_seed{seed}.pt"
+    os.makedirs(MODEL_DIR, exist_ok=True)
+    save_path = f"{MODEL_DIR}/{model_name}_seed{seed}.pt"
     torch.save(model.state_dict(), save_path)
     if verbose:
         print(f"\nSaved model to {save_path}")
 
     # Log results to a CSV so we build a proper record over time instead
     # of relying on terminal output / screenshots
-    results_path = "../outputs/results_log.csv"
+    results_path = f"{MODEL_DIR}/results_log.csv"
     result_row = {
         "model": model_name,
         "seed": seed,
@@ -209,5 +210,10 @@ if __name__ == "__main__":
     parser.add_argument("--cpu", action="store_true", help="Force CPU even if MPS/CUDA available")
     parser.add_argument("--epochs", type=int, default=None, help="Override default EPOCHS (useful for quick timing tests)")
     parser.add_argument("--data", type=str, default=None, help="Override default DATA_CSV path")
+    parser.add_argument("--model-dir", type=str, default=None, help="Where to write checkpoints and results_log.csv")
+    parser.add_argument("--seed", type=int, default=SEED, help="Training seed")
     args = parser.parse_args()
-    main(args.model, force_cpu=args.cpu, epochs=args.epochs, data_csv=args.data)
+    if args.model_dir:
+        MODEL_DIR = args.model_dir
+    main(args.model, force_cpu=args.cpu, seed=args.seed, epochs=args.epochs,
+         data_csv=args.data)

@@ -12,9 +12,24 @@ venv/
 src/def Max_Min(a):.py.py
 src/results_log copy.csv
 src/Untitled-1.ipynb
+overnight.log
 
-# manuscript working files — kept local, not part of the public code release
+# Third-party annotation: 129 MB, exceeds GitHub's 100 MB per-file limit.
+# Download from https://www.gencodegenes.org/human/ (comprehensive, CHR, GTF).
+data/*.gtf
+data/*.gtf.gz
+
+# Derived parse cache (170 MB), rebuilt automatically on first run
+data/*.pkl
+
+# Reference genome, if it is ever placed here
+*.fa
+*.fa.fai
+
+# Manuscript working files — kept local, not part of the public code release
 PAPER_DRAFT_methods_results.md
 PUM2_attention_vs_IG_preprint.docx
+PUM2_benchmark_design_preprint.docx
 arxiv_abstract.txt
+RERUN_CHECKLIST.md
 src/README.md

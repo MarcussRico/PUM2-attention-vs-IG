@@ -1,0 +1,6 @@
+model,seed,test_auc_roc,test_auc_pr,num_params,epochs
+cnn_lstm_attention,0,0.7626,0.7667,18210,40
+cnn_lstm_attention,1,0.7653,0.7681,18210,40
+cnn_lstm_attention,2,0.7587,0.7615,18210,40
+cnn_lstm_attention,3,0.7603,0.7638,18210,40
+cnn_lstm_attention,4,0.7497,0.7494,18210,40

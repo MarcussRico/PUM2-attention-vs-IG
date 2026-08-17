@@ -1,0 +1,6 @@
+dataset,n_sequences,auc_roc,auc_pr,test_size,seed
+D region negs + padded,134071,0.6161,0.5996,0.3,42
+B region negs + centred,134078,0.6187,0.603,0.3,42
+A chrom negs + centred,133729,0.7042,0.676,0.3,42
+C chrom negs + padded,133700,0.696,0.6711,0.3,42
+v1 original,171998,0.6868,0.664,0.3,42

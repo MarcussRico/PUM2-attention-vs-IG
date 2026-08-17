@@ -1,10 +1,11 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
-title: "Attention vs. Integrated Gradients for PUM2 Binding-Site Prediction"
+title: "Benchmark Design Determines Whether Attention Is Faithful"
 abstract: >-
-  Code and result logs for a comparison of attention weights against Integrated
-  Gradients attributions for RNA-binding protein binding-site prediction,
-  validated against the experimentally characterized PUM2 binding motif.
+  Code, data and results for a 2x2 controlled study of how benchmark construction
+  (negative sampling and positive-window placement) determines whether attention
+  weights faithfully localize the experimentally characterized PUM2 binding motif
+  in RNA-binding protein binding-site models.
 type: software
 authors:
   - given-names: "Sai Charan"
@@ -13,12 +14,14 @@ authors:
     city: "Chennai"
     country: "IN"
 license: MIT
-version: "1.0.0"
-date-released: "2026-08-12"
+version: "2.0.0"
+date-released: "2026-08-17"
 keywords:
+  - interpretability
+  - attention mechanisms
+  - integrated gradients
+  - benchmark design
+  - shortcut learning
   - RNA-binding proteins
   - PUM2
-  - interpretability
-  - integrated gradients
-  - attention
   - deep learning

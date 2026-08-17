@@ -85,7 +85,9 @@ def manual_roc_curve(labels, scores):
 
 
 def auc_trapz(fpr, tpr):
-    return np.trapz(tpr, fpr)
+    # np.trapz was removed in NumPy 2.0 and renamed to np.trapezoid
+    trapezoid = getattr(np, "trapezoid", None) or np.trapz
+    return trapezoid(tpr, fpr)
 
 
 def fig1_and_2(test_sequences, test_labels, X_test):
@@ -291,7 +293,10 @@ def fig6_agreement_scatter(per_seq_df):
     ax.set_xlabel("Attention peak position (nt)")
     ax.set_ylabel("Integrated Gradients peak position (nt)")
     corr = np.corrcoef(with_motif.attn_peak, with_motif.ig_peak)[0, 1]
-    ax.set_title(f"Attention vs. IG Peak Position (seed 0)\nPearson r = {corr:.3f} — mostly disagree")
+    verdict = ("mostly agree" if corr >= 0.7 else
+               "partial agreement" if corr >= 0.4 else "mostly disagree")
+    ax.set_title(f"Attention vs. IG Peak Position (seed 0)\n"
+                 f"Pearson r = {corr:.3f} — {verdict}")
     ax.legend()
     plt.tight_layout()
     plt.savefig(f"{FIG_DIR}/fig6_agreement_scatter.png", dpi=200, bbox_inches="tight")

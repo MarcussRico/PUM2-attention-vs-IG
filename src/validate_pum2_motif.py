@@ -42,6 +42,8 @@ from dataset import RBPDataset
 from cnn_lstm_attention import CNNLSTMAttention
 
 DATA_CSV = "../data/real_sequences.csv"
+MODEL_DIR = "../outputs"
+OUT_CSV = "../outputs/pum2_motif_validation.csv"
 SEQ_LEN = 101
 VAL_SPLIT = 0.15
 TEST_SPLIT = 0.15
@@ -116,7 +118,7 @@ def main():
     per_seed_summary = []
 
     for seed in SEEDS:
-        ckpt_path = f"../outputs/cnn_lstm_attention_seed{seed}.pt"
+        ckpt_path = f"{MODEL_DIR}/cnn_lstm_attention_seed{seed}.pt"
         model = CNNLSTMAttention(seq_len=SEQ_LEN).to(device)
         model.load_state_dict(torch.load(ckpt_path, map_location=device))
         model.eval()
@@ -203,9 +205,16 @@ def main():
     print(f"Lift over null:          {np.mean(hit_rates) - np.mean(null_rates):+.4f}")
 
     out = pd.DataFrame(per_seed_summary)
-    out.to_csv("../outputs/pum2_motif_validation.csv", index=False)
-    print("\nSaved per-seed results to ../outputs/pum2_motif_validation.csv")
+    out.to_csv(OUT_CSV, index=False)
+    print(f"\nSaved per-seed results to {OUT_CSV}")
 
 
 if __name__ == "__main__":
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--data", default=DATA_CSV)
+    ap.add_argument("--model-dir", default=MODEL_DIR)
+    ap.add_argument("--out", default=OUT_CSV)
+    _a = ap.parse_args()
+    DATA_CSV, MODEL_DIR, OUT_CSV = _a.data, _a.model_dir, _a.out
     main()
